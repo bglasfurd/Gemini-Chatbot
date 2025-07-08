@@ -1,0 +1,52 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  controllerName="gemini.controller.View1"
+  xmlns:formatter="gemini/utils/formatter"
+  xmlns:u="sap.ui.unified">
+  <Page title="Gemini chat bot">
+    <VBox   class="sapUiMediumMargin" width="95%">
+
+      <!-- Scrollable message list -->
+      <ScrollContainer height="470px" vertical="true">
+        
+        <List
+          id="messageList"
+          items="{
+            path: '/messages'
+          }"
+          showSeparators="None">
+
+          <CustomListItem>
+            <VBox
+              class="sapUiSmallMargin"
+              justifyContent="End">
+              <HBox
+                class="sapUiSmallMarginTop"
+                justifyContent="{= ${sender} === 'You' ? 'End' : 'Start' }">
+                <!-- {= ${sender} === 'You' ? 'userMessage' : 'botMessage' } -->
+                <VBox
+                  class="messageBox userMessage"
+                  alignItems="Start">
+                  <Text text="{text}" />
+                  <Text text="{timestamp}"/>
+                </VBox>
+              </HBox>
+            </VBox>
+          </CustomListItem>
+        </List>
+        <BusyIndicator visible="{/loading}" />
+      </ScrollContainer>
+
+      <!-- Input -->
+      <FeedInput
+        id="feedInput"
+        showIcon="false"
+        placeholder="Ask Gemini something..."
+        post="onPostMessage" />
+      
+      <u:FileUploader id="fileUploader" uploadOnChange="false" />
+
+    </VBox>
+  </Page>
+</mvc:View>

@@ -1,0 +1,16 @@
+.messageBox {
+  padding: 0.75rem;
+  border-radius: 1rem;
+  max-width: 60%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.userMessage {
+  background-color: #56c8f1;
+  align-self: flex-end !important;
+}
+
+.botMessage {
+  background-color: #ea6d6d;
+  align-self: flex-start !important;
+}
